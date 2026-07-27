@@ -15,10 +15,11 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<TblUser> TblUsers { get; set; }
 
-    public async Task SaveChangesAsync()
+    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        return base.SaveChangesAsync(cancellationToken);
     }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
